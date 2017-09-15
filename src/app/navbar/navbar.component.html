@@ -5,9 +5,6 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]="!isCollapsed">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-                <a routerLink="/login" class="nav-link">Login</a>
-            </li>
             <li class="nav-item active">
                 <a routerLink="/" class="nav-link active">Trang chủ</a>
             </li>
@@ -26,6 +23,20 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li *ngIf="!user" class="nav-item active">
+                    <a routerLink="/login" class="nav-link active">Đăng nhập</a>
+                </li>
+                <li *ngIf="user" class="nav-item">
+                    <img [src]="user.photoURL" width="30px" height="30px" class="img-thumbnail">
+                </li>
+            </ul>
+            <div ngbDropdown *ngIf="user" class="d-inline-block">
+                <a class="nav-link active text-light" id="dropdownBasic1" ngbDropdownToggle>{{user.displayName}}</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <a (click)="logout()" class="dropdown-item">Thoát</a>
+                </div>
+            </div>
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
