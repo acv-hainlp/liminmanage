@@ -40,7 +40,8 @@ import { LoginComponent } from './login/login.component';
       { path: 'students', component: StudentsComponent },
       { path: 'courses', component: CoursesComponent},
       { path: 'teachers', component: TeachersComponent },
-      { path: 'bills', component: BillsComponent }
+      { path: 'bills', component: BillsComponent },
+      { path: 'login', component: LoginComponent }
     ])
   ],
   providers: [],
