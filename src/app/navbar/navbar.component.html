@@ -22,7 +22,7 @@
             </li>
             <li>
                 <ng-template #anonymousUser>
-                    <a routerLink="/login" class="btn btn-outline-info mr-md-3 mx-sm-0">Đăng nhập</a>
+                    <a routerLink="/login" class="btn btn-outline-info mr-md-3 mx-sm-0 ml-md-3">Đăng nhập</a>
                 </ng-template>
                 <div ngbDropdown *ngIf="user$ | async as user; else anonymousUser" class="d-inline-block">
                     <a class="nav-link active text-light" id="dropdownBasic1" ngbDropdownToggle>{{user.displayName}}</a>
