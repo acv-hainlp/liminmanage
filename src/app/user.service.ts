@@ -17,6 +17,6 @@ export class UserService {
   }
 
   get(uid: string): FirebaseObjectObservable<AppUser>{
-    return this.db.object('/users/' + uid); //return user  in db
+    return this.db.object('/users/' + uid); //return all user information  in db
   }
 }
