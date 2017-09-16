@@ -1,4 +1,5 @@
-import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -38,7 +39,7 @@ import { LoginComponent } from './login/login.component';
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'students', component: StudentsComponent },
+      { path: 'students', component: StudentsComponent, canActivate:[AuthGuard] },
       { path: 'courses', component: CoursesComponent},
       { path: 'teachers', component: TeachersComponent },
       { path: 'bills', component: BillsComponent },
@@ -46,7 +47,8 @@ import { LoginComponent } from './login/login.component';
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
