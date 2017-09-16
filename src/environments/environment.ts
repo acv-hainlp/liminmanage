@@ -7,11 +7,11 @@ export const environment = {
   production: false,
   firebase:
   {
-    apiKey: "AIzaSyCYuxybiP5d3dbzXgpw-b-spU27UDHjYDE",
-    authDomain: "liminmanageus.firebaseapp.com",
-    databaseURL: "https://liminmanageus.firebaseio.com",
-    projectId: "liminmanageus",
-    storageBucket: "",
-    messagingSenderId: "522249746082"
+    apiKey: "AIzaSyC6uxtV5TxMN95j5tMtzc_KxSNI8EZNMK0",
+    authDomain: "liminstudio-1e6b4.firebaseapp.com",
+    databaseURL: "https://liminstudio-1e6b4.firebaseio.com",
+    projectId: "liminstudio-1e6b4",
+    storageBucket: "liminstudio-1e6b4.appspot.com",
+    messagingSenderId: "614117560522"
   }
 };
