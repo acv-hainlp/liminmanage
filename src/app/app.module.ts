@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UserService } from './user.service';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -39,18 +40,19 @@ import { LoginComponent } from './login/login.component';
     AngularFireAuthModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'students', component: StudentsComponent, canActivate:[AuthGuard]},
-      { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard]},
-      { path: 'teachers', component: TeachersComponent, canActivate:[AuthGuard] },
-      { path: 'bills', component: BillsComponent, canActivate:[AuthGuard] },
+      { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
+      { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'teachers', component: TeachersComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'bills', component: BillsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'login', component: LoginComponent }
     ])
   ],
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
