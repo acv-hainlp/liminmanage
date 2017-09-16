@@ -39,10 +39,10 @@ import { LoginComponent } from './login/login.component';
     NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'students', component: StudentsComponent, canActivate:[AuthGuard] },
-      { path: 'courses', component: CoursesComponent},
-      { path: 'teachers', component: TeachersComponent },
-      { path: 'bills', component: BillsComponent },
+      { path: 'students', component: StudentsComponent, canActivate:[AuthGuard]},
+      { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard]},
+      { path: 'teachers', component: TeachersComponent, canActivate:[AuthGuard] },
+      { path: 'bills', component: BillsComponent, canActivate:[AuthGuard] },
       { path: 'login', component: LoginComponent }
     ])
   ],
