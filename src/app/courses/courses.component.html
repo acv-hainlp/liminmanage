@@ -1,5 +1,7 @@
 <a routerLink="new" class="btn btn-primary">Thêm khóa học mới</a>
-
+<div class="my-3" >
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Tìm kiếm ..">
+</div>
 <table class="table table-bordered table-responsive my-3">
     <thead>
         <tr>
@@ -11,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let c of courses$ | async; index as i ">
+        <tr *ngFor="let c of filteredCourse; index as i ">
             <td>{{i+1}}</td>
             <td>{{ c.title }}</td>
             <td>{{ c.price }},000 vnd</td>
