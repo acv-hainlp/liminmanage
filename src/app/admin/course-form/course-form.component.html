@@ -1,13 +1,13 @@
-<form class="my-3">
+<form #f="ngForm" class="my-3" (ngSubmit)="save(f.value)">
   <div class="form-row">
     <div class="form-group col">
       <label for="title">Tên khóa học</label>
-      <input id="title" name="title" type="text" class="form-control" placeholder="Tên khóa học">
+      <input ngModel id="title" name="title" type="text" class="form-control" placeholder="Tên khóa học">
     </div>
     <div class="form-group col">
       <label for="price">Giá tiền</label>
       <div class="input-group">
-        <input type="number" class="form-control" placeholder="Giá tiền" name="price" id="price">
+        <input ngModel type="number" class="form-control" placeholder="Giá tiền" name="price" id="price">
         <span class="input-group-addon">,000 Vnd</span>
       </div>
     </div>
@@ -16,13 +16,13 @@
     <label for="imageUrl">Ảnh khóa học</label>
     <div class="input-group">
       <span class="input-group-addon">Url</span>
-      <input type="text" class="form-control" placeholder="Ảnh khóa học" name="imageUrl" id="imageUrl">
+      <input ngModel type="text" class="form-control" placeholder="Ảnh khóa học" name="imageUrl" id="imageUrl">
     </div>
   </div>
   <div class="form-group">
       <label for="description">Nội dung khóa học</label>
       <div class="input-group">
-        <textarea class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
+        <textarea ngModel class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
       </div>
     </div>
 

@@ -1,3 +1,4 @@
+import { CourseService } from './course.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UserService } from './user.service';
 import { AuthGuard } from './auth-guard.service';
@@ -10,6 +11,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -35,7 +37,7 @@ import { ClassComponent } from './class/class.component';
     AdminUsersComponent,
     LoginComponent,
     CourseFormComponent,
-    ClassComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { ClassComponent } from './class/class.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
       { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
@@ -58,6 +61,7 @@ import { ClassComponent } from './class/class.component';
     AuthService,
     AuthGuard,
     UserService,
+    CourseService,
     AdminAuthGuard
   ],
   bootstrap: [AppComponent]
