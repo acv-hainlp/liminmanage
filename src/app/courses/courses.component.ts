@@ -1,3 +1,4 @@
+import { Product } from './../models/course';
 import { CourseService } from './../course.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit, OnDestroy  {
-  courses: {title: string}[]; // for filter title of all courses
+  courses: Product[]; // for filter title of all courses
   filteredCourse: any[]; // save all course in here to return
   subcription: Subscription; // create to destroy
 
