@@ -9,11 +9,14 @@ export class CourseService {
 
   create(course) {
     this.db.list('/courses').push(course);
-    this.router.navigate(['/courses']);
   }
 
   getAll(){
     return this.db.list('/courses');
+  }
+
+  get(coursesId){
+    return this.db.object('/courses/' + coursesId);
   }
 
 }
