@@ -28,4 +28,11 @@ export class CourseFormComponent {
       this.router.navigate(['/courses']);
    }
 
+   delete(id) {
+      if(!confirm('Bạn chắc chắn muốn xóa khóa học này ?')) return;
+
+      this.courseService.delete(this.id);
+      this.router.navigate(['/courses']);
+   }
+
 }

@@ -23,4 +23,8 @@ export class CourseService {
     return this.db.object('/courses/' + coursesId).update(course);
   }
 
+  delete(coursesId) {
+    return this.db.object('/courses/' + coursesId).remove();
+  }
+
 }
