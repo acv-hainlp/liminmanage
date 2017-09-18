@@ -1,1 +1,24 @@
-<a routerLink="new" class="btn btn-primary">New Course</a>
+<a routerLink="new" class="btn btn-primary">Thêm khóa học mới</a>
+
+<table class="table table-bordered table-responsive my-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên khóa học</th>
+            <th>Học phí</th>
+            <th>Ảnh</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of courses$ | async; index as i ">
+            <td>{{i+1}}</td>
+            <td>{{ c.title }}</td>
+            <td>{{ c.price }},000 vnd</td>
+            <td>
+                <img src="{{c.imageUrl}}" class="img-resposive" style="max-height:100px">
+            </td>
+            <td><a [routerLink]="['/courses/', c.$key]">Sửa</a></td>
+        <tr>
+    </tbody>
+</table>

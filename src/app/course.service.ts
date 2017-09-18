@@ -12,4 +12,8 @@ export class CourseService {
     this.router.navigate(['/courses']);
   }
 
+  getAll(){
+    return this.db.list('/courses');
+  }
+
 }
