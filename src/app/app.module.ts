@@ -20,6 +20,8 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { BillsComponent } from './bills/bills.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { LoginComponent } from './login/login.component';
+import { CourseFormComponent } from './admin/course-form/course-form.component';
+import { ClassComponent } from './class/class.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { LoginComponent } from './login/login.component';
     BillsComponent,
     AdminUsersComponent,
     LoginComponent,
+    CourseFormComponent,
+    ClassComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
       { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'class', component: ClassComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'courses/new', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'teachers', component: TeachersComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'bills', component: BillsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
