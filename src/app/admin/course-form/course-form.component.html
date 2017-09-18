@@ -1,39 +1,59 @@
-<form #f="ngForm" class="my-3" (ngSubmit)="save(f.value)">
-  <div class="form-row">
-    <div class="form-group col">
-      <label for="title">Tên khóa học</label>
-      <input #title="ngModel" ngModel id="title" name="title" type="text" class="form-control" placeholder="Tên khóa học" required>
-      <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Tên khóa học không được bỏ trống</div>
-    </div>
-    <div class="form-group col">
-      <label for="price">Giá tiền</label>
-      <div class="input-group">
-        <input #price="ngModel" ngModel type="number" class="form-control" placeholder="Giá tiền" name="price" id="price" required [range]="[0,2000]">
-        <span class="input-group-addon">,000 Vnd</span>
+<div class="row my-3">
+  <div class="col col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="title">Tên khóa học</label>
+          <input #title="ngModel" ngModel id="title" name="title" type="text" class="form-control" placeholder="Tên khóa học" required>
+          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">Tên khóa học không được bỏ trống</div>
+        </div>
+        <div class="form-group col">
+          <label for="price">Giá tiền</label>
+          <div class="input-group">
+            <input #price="ngModel" ngModel type="number" class="form-control" placeholder="Giá tiền" name="price" id="price" required
+              [range]="[0,2000]">
+            <span class="input-group-addon">,000 Vnd</span>
+          </div>
+          <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+            <div *ngIf="price.errors.required">Bạn phải nhập giá tiền</div>
+            <div *ngIf="price.errors.range">Giá tiền phải lớn hơn 0 và nhỏ hơn 2000</div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
-        <div *ngIf="price.errors.required">Bạn phải nhập giá tiền</div>
-        <div *ngIf="price.errors.range">Giá tiền phải lớn hơn 0 và nhỏ hơn 2000</div>
+      <div class="form-group">
+        <label for="imageUrl">Ảnh khóa học</label>
+        <div class="input-group">
+          <span class="input-group-addon">Url</span>
+          <input #imageUrl="ngModel" ngModel type="text" class="form-control" placeholder="Ảnh khóa học" name="imageUrl" id="imageUrl"
+            required url>
+        </div>
+        <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+          <div *ngIf="imageUrl.errors.required">Bạn phải link ảnh của khóa học</div>
+          <div *ngIf="imageUrl.errors.url">link ảnh phải là dạng url</div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="imageUrl">Ảnh khóa học</label>
-    <div class="input-group">
-      <span class="input-group-addon">Url</span>
-      <input #imageUrl="ngModel" ngModel type="text" class="form-control" placeholder="Ảnh khóa học" name="imageUrl" id="imageUrl" required url>
-    </div>
-    <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
-        <div *ngIf="imageUrl.errors.required">Bạn phải link ảnh của khóa học</div>
-        <div *ngIf="imageUrl.errors.url">link ảnh phải là dạng url</div>
+      <div class="form-group">
+        <label for="description">Nội dung khóa học</label>
+        <div class="input-group">
+          <textarea #description="ngModel" ngModel class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
+        </div>
       </div>
-  </div>
-  <div class="form-group">
-      <label for="description">Nội dung khóa học</label>
-      <div class="input-group">
-        <textarea ngModel class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
-      </div>
-    </div>
 
-  <button type="submit" class="btn btn-primary">Tạo khóa học</button>
-</form>
+      <button type="submit" class="btn btn-primary">Tạo khóa học</button>
+    </form>
+  </div>
+  <div class="col col-md-6">
+    <div class="card" style="width: 20rem;">
+        <!-- <div *ngIf="imageUrl.valid"> -->
+          <img class="card-img-top" [src]="imageUrl.value"
+          onError="this.src='http://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder.gif'">
+        <!-- </div> -->
+      <div class="card-body">
+        <h4 class="card-title">{{title.value}}</h4>
+        <p class="card-text">{{ price.value + ',000 vnd'}}</p>
+        <hr>
+        <p class="card-text">{{ description.value}}</p>
+      </div>
+    </div>
+  </div>
+</div>
