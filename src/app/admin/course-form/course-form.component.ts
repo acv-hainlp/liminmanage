@@ -12,7 +12,7 @@ import 'rxjs/add/operator/take'; //on Destroy => unsubcribe
   styleUrls: ['./course-form.component.css']
 })
 export class CourseFormComponent {
-  course = {};
+  course:any = {};
   id;
   // appUser: AppUser;
 
