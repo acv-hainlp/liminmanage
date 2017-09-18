@@ -19,4 +19,8 @@ export class CourseService {
     return this.db.object('/courses/' + coursesId);
   }
 
+  update(coursesId, course) {
+    return this.db.object('/courses/' + coursesId).update(course);
+  }
+
 }

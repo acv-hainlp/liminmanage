@@ -12,17 +12,19 @@ import 'rxjs/add/operator/take'; //on Destroy => unsubcribe
 })
 export class CourseFormComponent {
   course = {};
+  id;
   // appUser: AppUser;
 
   constructor(private courseService: CourseService, private route: ActivatedRoute, private router: Router) {
     // auth.appUser$.subscribe(appUser => this.appUser = appUser)
-    let id = this.route.snapshot.paramMap.get('id'); // get id from url
-    if (id) this.courseService.get(id).take(1).subscribe(c => this.course = c); //if url have id => find in db => return
+    this.id = this.route.snapshot.paramMap.get('id'); // get id from url
+    if (this.id) this.courseService.get(this.id).take(1).subscribe(c => this.course = c); //if url have id => find in db => return
    }
 
    save(course)
    {
-      this.courseService.create(course);
+      if(this.id) this.courseService.update(this.id, course) // if id!=null => update, else create
+      else this.courseService.create(course);
       this.router.navigate(['/courses']);
    }
 
