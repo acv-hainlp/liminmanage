@@ -1,3 +1,4 @@
+import { Course } from './../../models/course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from './../../course.service';
 import { AuthService } from './../../auth.service';
@@ -19,6 +20,7 @@ export class CourseFormComponent {
     // auth.appUser$.subscribe(appUser => this.appUser = appUser)
     this.id = this.route.snapshot.paramMap.get('id'); // get id from url
     if (this.id) this.courseService.get(this.id).take(1).subscribe(c => this.course = c); //if url have id => find in db => return
+    
    }
 
    save(course)
