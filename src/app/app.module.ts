@@ -21,10 +21,10 @@ import { StudentsComponent } from './students/students.component';
 import { CoursesComponent } from './courses/courses.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { BillsComponent } from './bills/bills.component';
-import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { LoginComponent } from './login/login.component';
-import { CourseFormComponent } from './admin/course-form/course-form.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 import { ClassComponent } from './class/class.component';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +35,10 @@ import { ClassComponent } from './class/class.component';
     CoursesComponent,
     TeachersComponent,
     BillsComponent,
-    AdminUsersComponent,
     LoginComponent,
     CourseFormComponent,
-    ClassComponent
+    ClassComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +51,7 @@ import { ClassComponent } from './class/class.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
       { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'students/new', component: StudentFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'class', component: ClassComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/new', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/:id', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},

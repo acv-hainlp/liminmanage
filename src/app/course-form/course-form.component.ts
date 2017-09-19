@@ -1,8 +1,8 @@
-import { Course } from './../../models/course';
+import { Course } from '../models/course';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CourseService } from './../../course.service';
-import { AuthService } from './../../auth.service';
-import { AppUser } from './../../models/app-user';
+import { CourseService } from '../course.service';
+import { AuthService } from '../auth.service';
+import { AppUser } from '../models/app-user';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take'; //on Destroy => unsubcribe
 
