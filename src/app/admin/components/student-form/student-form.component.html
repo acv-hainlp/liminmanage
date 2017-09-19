@@ -2,26 +2,27 @@
     <form #f="ngForm" (ngSubmit)="save(f.value)">
       <div class="form-group">
         <label for="name">Tên học sinh</label>
-        <input #name="ngModel" ngModel type="text" class="form-control" id="name" name="name" required>
+        <input #name="ngModel" [(ngModel)]="student.name" type="text" class="form-control" id="name" name="name" required>
         <div *ngIf="name.touched && name.invalid" class="alert alert-danger">Bạn phải nhập tên học sinh</div>
       </div>
       <div class="form-group">
         <label for="dob">Sinh ngày</label>
-        <input ngModel type="date" class="form-control" id="dob" name="dob" placeholder="Sinh nhật" >
+        <input [(ngModel)]="student.dob" type="date" class="form-control" id="dob" name="dob" placeholder="Sinh nhật" >
       </div>
       <div class="form-group">
         <label for="mobile">Số điện thoại</label>
-        <input ngModel type="number" class="form-control" id="mobile" name="mobile" placeholder="Điện thoại" >
+        <input [(ngModel)]="student.mobile" type="number" class="form-control" id="mobile" name="mobile" placeholder="Điện thoại" >
       </div>
       <div class="form-group">
         <label for="address">Địa chỉ</label>
-        <input ngModel type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ">
+        <input [(ngModel)]="student.address" type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ">
       </div>
       <div class="form-group">
         <label for="fbUrl">Facebook link</label>
-        <input #fbUrl="ngModel" ngModel type="text" class="form-control" id="fbUrl" name="fbUrl" placeholder="Facebook link" url>
+        <input #fbUrl="ngModel" [(ngModel)]="student.fbUrl" type="text" class="form-control" id="fbUrl" name="fbUrl" placeholder="Facebook link" url>
         <div *ngIf="fbUrl.touched && fbUrl.invalid" class="alert alert-danger">Phải là url</div>
       </div>
-      <button type="submit" class="btn btn-primary">Tạo</button>
+      <button type="submit" class="btn btn-primary">{{(!id) ? "Tạo" : "Cập nhật" }}</button>
+      <button *ngIf="id" class="btn btn-danger">Xóa</button>
     </form>
 </div>

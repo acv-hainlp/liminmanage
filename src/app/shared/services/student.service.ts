@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StudentService {
-
+  
   constructor(private db: AngularFireDatabase ) { }
 
   create(student) {
@@ -12,6 +12,14 @@ export class StudentService {
 
   getAll() {
     return this.db.list('/students');
+  }
+
+  get(studentId) {
+    return this.db.object('/students/' + studentId);
+  }
+
+  update(studentId, student){
+    return this.db.object('/students/' + studentId).update(student);
   }
 
 }

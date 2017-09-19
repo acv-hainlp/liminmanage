@@ -53,6 +53,7 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
       { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
       { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'students/new', component: StudentFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'students/:id', component: StudentFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'class', component: ClassComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/new', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/:id', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
