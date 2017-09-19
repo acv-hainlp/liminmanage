@@ -2,7 +2,7 @@
     <form #f="ngForm" (ngSubmit)="save(f.value)">
       <div class="form-group">
         <label for="name">Tên học sinh</label>
-        <input #name="ngModel" [(ngModel)]="student.name" type="text" class="form-control" id="name" name="name" required>
+        <input #name="ngModel" [(ngModel)]="student.name" type="text" class="form-control" id="name" name="name" placeholder="Tên học sinh" required>
       </div>
       <div class="form-group">
           <label for="mobile">Số điện thoại</label>
@@ -10,7 +10,7 @@
         </div>
       <div class="form-group">
         <label for="dob">Sinh ngày</label>
-        <input [(ngModel)]="student.dob" type="date" class="form-control" id="dob" name="dob" placeholder="Sinh nhật" >
+        <input [(ngModel)]="student.dob" type="date" class="form-control" id="dob" name="dob" placeholder="Sinh nhật" required>
       </div>
       <div class="form-group">
         <label for="address">Địa chỉ</label>
@@ -18,7 +18,7 @@
       </div>
       <div class="form-group">
         <label for="fbUrl">Facebook link</label>
-        <input #fbUrl="ngModel" [(ngModel)]="student.fbUrl" type="text" class="form-control" id="fbUrl" name="fbUrl" placeholder="Facebook link" url>
+        <input #fbUrl="ngModel" [(ngModel)]="student.fbUrl" type="text" class="form-control" id="fbUrl" name="fbUrl" placeholder="Facebook Link" url>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">{{(!id) ? "Tạo" : "Cập nhật" }}</button>
       <button *ngIf="id" (click)="delete()" type="button" class="btn btn-danger">Xóa</button>

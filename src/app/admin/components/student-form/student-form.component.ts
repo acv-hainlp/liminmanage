@@ -23,9 +23,10 @@ export class StudentFormComponent implements OnInit {
   }
 
   save(student) {
-    if (!student.dob) student.dob = "";
-    if (!student.address) student.address = "";
-    if (!student.fbUrl) student.fbUrl = "";
+    for (let key in student) {
+      let value = student[key];
+      if (!value) delete student[key];
+    }
 
     if(this.id) this.studentService.update(this.id, student); else this.studentService.create(student);
     this.router.navigate(['/students']);

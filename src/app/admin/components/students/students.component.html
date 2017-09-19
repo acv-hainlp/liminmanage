@@ -17,7 +17,7 @@
             <td>{{ s.name }}</td>
             <td>{{s.dob}}</td>
             <td>{{s.mobile}}</td>
-            <td><a class="h4" href="{{s.fbUrl}}" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></td>
+            <td><a *ngIf="s.fbUrl" class="h4" href="{{s.fbUrl}}" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></td>
             <td><a [routerLink]="['/students/', s.$key]">Sửa</a></td>
         </tr>
 </table>
