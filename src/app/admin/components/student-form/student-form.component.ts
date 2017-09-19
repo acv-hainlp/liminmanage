@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { StudentService } from './../../../shared/services/student.service';
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take'; 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-student-form',
@@ -21,9 +22,18 @@ export class StudentFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  save(student:Student) {
+  save(student) {
+    if (!student.dob) student.dob = "";
+    if (!student.address) student.address = "";
+    if (!student.fbUrl) student.fbUrl = "";
+
     if(this.id) this.studentService.update(this.id, student); else this.studentService.create(student);
     this.router.navigate(['/students']);
   }
 
+  delete(id) {
+    if(!confirm("Bạn có chắc chắn muốn xóa ?")) return 
+    this.studentService.delete(this.id);
+    this.router.navigate(['/students']);
+  }
 }

@@ -35,11 +35,11 @@
       <div class="form-group">
         <label for="description">Nội dung khóa học</label>
         <div class="input-group">
-          <textarea #description="ngModel" ngModel class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
+          <textarea #description="ngModel" [(ngModel)]="course.description" class="form-control" name="description" id="description" placeholder="Nội dung khóa học"></textarea>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">{{(id) ? "Cập nhật" : "Thêm khóa học" }}</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">{{(id) ? "Cập nhật" : "Thêm khóa học" }}</button>
       <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Xóa</button>
     </form>
   </div>

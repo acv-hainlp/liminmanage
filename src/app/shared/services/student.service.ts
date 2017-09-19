@@ -22,4 +22,8 @@ export class StudentService {
     return this.db.object('/students/' + studentId).update(student);
   }
 
+  delete(studentId) {
+    return this.db.object('/students/' + studentId).remove();
+  }
+
 }

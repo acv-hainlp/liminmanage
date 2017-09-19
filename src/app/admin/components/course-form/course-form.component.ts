@@ -25,6 +25,8 @@ export class CourseFormComponent {
 
    save(course)
    {
+      if (course.description == null) course.description = "";
+
       if(this.id) this.courseService.update(this.id, course) // if id!=null => update, else create
       else this.courseService.create(course);
       this.router.navigate(['/courses']);
