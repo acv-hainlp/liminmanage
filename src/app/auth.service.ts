@@ -24,6 +24,8 @@ export class AuthService {
     localStorage.setItem('returnUrl', returnUrl); //save cockies key: value
 
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    
   }
 
   logout() {
