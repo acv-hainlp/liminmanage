@@ -1,3 +1,4 @@
+import { Student } from '../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,10 @@ export class StudentFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  save(student:Student) {
+    console.log(student);
   }
 
 }

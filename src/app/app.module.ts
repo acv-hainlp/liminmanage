@@ -1,8 +1,8 @@
-import { CourseService } from './course.service';
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { UserService } from './user.service';
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { CourseService } from './shared/services/course.service';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { UserService } from './shared/services/user.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { AuthService } from './shared/services/auth.service';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,16 +15,16 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { StudentsComponent } from './students/students.component';
-import { CoursesComponent } from './courses/courses.component';
-import { TeachersComponent } from './teachers/teachers.component';
-import { BillsComponent } from './bills/bills.component';
-import { LoginComponent } from './login/login.component';
-import { CourseFormComponent } from './course-form/course-form.component';
-import { ClassComponent } from './class/class.component';
-import { StudentFormComponent } from './student-form/student-form.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { StudentsComponent } from './admin/components/students/students.component';
+import { CoursesComponent } from './admin/components/courses/courses.component';
+import { TeachersComponent } from './admin/components/teachers/teachers.component';
+import { BillsComponent } from './admin/components/bills/bills.component';
+import { LoginComponent } from './core/components/login/login.component';
+import { CourseFormComponent } from './admin/components/course-form/course-form.component';
+import { ClassComponent } from './admin/components/class/class.component';
+import { StudentFormComponent } from './admin/components/student-form/student-form.component';
 
 @NgModule({
   declarations: [
