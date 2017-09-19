@@ -1,1 +1,23 @@
-<button class="btn btn-default" routerLink="/students/new">New Student</button>
+<button class="btn btn-primary" routerLink="/students/new">New Student</button>
+
+<table class="table table-bordered my-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên học sinh</th>
+            <th>Ngày sinh</th>
+            <th>Số điện thoại</th>
+            <th>Facebook</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students; index as i">
+            <td>{{i+1}}</td>
+            <td>{{ s.name }}</td>
+            <td>{{s.dob}}</td>
+            <td>{{s.mobile}}</td>
+            <td><a class="h4" href="{{s.fbUrl}}" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></td>
+            <td><a [routerLink]="['/students/', s.$key]">Sửa</a></td>
+        </tr>
+</table>

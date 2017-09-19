@@ -10,4 +10,8 @@ export class StudentService {
     this.db.list('/students').push(student);
   }
 
+  getAll() {
+    return this.db.list('/students');
+  }
+
 }
