@@ -28,6 +28,8 @@ export class StudentFormComponent implements OnInit {
       if (!value) delete student[key];
     }
 
+    // http://graph.facebook.com/100000011824520/picture?type=large
+
     if(this.id) this.studentService.update(this.id, student); else this.studentService.create(student);
     this.router.navigate(['/students']);
   }

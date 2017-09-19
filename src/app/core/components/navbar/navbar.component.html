@@ -23,26 +23,22 @@
             <li class="nav-item">
                 <a routerLink="/courses" class="nav-link ">Quản lý khóa học</a>
             </li>
-            <li>
-                <ng-template #anonymousUser>
-                    <a routerLink="/login" class="btn btn-outline-info mr-md-3 mx-sm-0 ml-md-3">Đăng nhập</a>
-                </ng-template>
-                <div ngbDropdown *ngIf="appUser; else anonymousUser" class="d-inline-block">
-                    <a class="nav-link active text-light" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</a>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <ng-container  *ngIf="appUser.isAdmin">
-                           <a class="dropdown-item">Admin Detected</a>
-                        </ng-container >
-                        <a (click)="logout()" class="dropdown-item">Thoát</a>
-                    </div>
-                </div>
-            </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <div class="my-2 my-lg-0">
+            <ng-template #anonymousUser>
+                <a routerLink="/login" class="btn btn-outline-info mr-md-3 mx-sm-0 ml-md-3">Đăng nhập</a>
+            </ng-template>
+            <div ngbDropdown *ngIf="appUser; else anonymousUser" class="d-inline-block">
+                <a class="nav-link active text-light" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</a>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <ng-container  *ngIf="appUser.isAdmin">
+                       <a class="dropdown-item">Admin Detected</a>
+                    </ng-container >
+                    <a (click)="logout()" class="dropdown-item">Thoát</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </nav>
