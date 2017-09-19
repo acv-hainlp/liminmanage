@@ -1,3 +1,4 @@
+import { StudentService } from './shared/services/student.service';
 import { CourseService } from './shared/services/course.service';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { UserService } from './shared/services/user.service';
@@ -66,7 +67,8 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
     AuthGuard,
     UserService,
     CourseService,
-    AdminAuthGuard
+    AdminAuthGuard,
+    StudentService
   ],
   bootstrap: [AppComponent]
 })

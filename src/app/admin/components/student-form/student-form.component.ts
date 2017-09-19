@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { StudentService } from './../../../shared/services/student.service';
 import { Student } from '../../../shared/models/student';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,13 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit() {
   }
 
   save(student:Student) {
-    console.log(student);
+    this.studentService.create(student);
+    this.router.navigate(['/students']);
   }
 
 }
