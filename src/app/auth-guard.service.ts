@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
     return this.auth.user$.map(user=> {
       if(user) return true // login success
 
-      // this.router.navigate(['/login'], {queryParams: { returnUrl: state.url }}); // redirect to login page, queryparam: notice where user had block
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/login'], {queryParams: { returnUrl: state.url }}); // redirect to login page, queryparam: notice where user had block
+      // this.router.navigate(['/login']); 
       return false;
     });
   }
