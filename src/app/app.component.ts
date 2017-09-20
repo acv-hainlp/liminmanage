@@ -19,7 +19,10 @@ export class AppComponent {
         //when user login, save new user to database
 
         let returnUrl = localStorage.getItem('returnUrl'); // get url from local
-        router.navigateByUrl(returnUrl); //redirect
+        if(returnUrl) {
+          localStorage.removeItem('returnUrl'); // remove url in cookies
+          router.navigateByUrl(returnUrl); //redirect
+        }
       }
     });
   }
