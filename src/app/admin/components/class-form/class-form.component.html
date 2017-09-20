@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <form>
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
       <select ngModel #course="ngModel" name="course" class="custom-select" required>
           <option selected disabled>Chọn khóa học</option>
           <option *ngFor="let c of courses$ | async " [value]="c.$key">{{c.title}}</option>
@@ -9,11 +9,25 @@
             <option selected disabled>Chọn giáo viên</option>
             <option *ngFor="let t of teachers$ | async " [value]="t.$key">{{t.name}}</option>
         </select>
-    </form>
 
+        <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Tạo</button>
+    </form>
   </div>
   <div class="col-md-6">
-    
+    <h6 *ngFor="let i of studentsName ; index as a"> 
+      <span>{{ i }} + {{a}}</span>
+      <button class="btn btn-danger" (click)="removeStudent(a)"> Delete</button>
+    </h6>
   </div>
+
+  <div class="row">
+      <ul class="list-group">
+          <li *ngFor="let s of students$ | async" class="list-group-item ">
+            <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name)"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <span>{{ s.name }}</span>
+          </li>
+        </ul>
+  </div>
+
 
 </div>
