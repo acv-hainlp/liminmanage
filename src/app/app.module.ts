@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { DataTableModule} from 'angular-4-data-table';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
@@ -49,6 +50,7 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
     NgbModule.forRoot(),
     FormsModule,
     CustomFormsModule,
+    DataTableModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate:[AuthGuard, AdminAuthGuard] },
       { path: 'students', component: StudentsComponent, canActivate:[AuthGuard, AdminAuthGuard]},

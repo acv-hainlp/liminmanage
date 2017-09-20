@@ -1,23 +1,39 @@
 <button class="btn btn-primary" routerLink="/students/new"><i class="fa fa-plus" aria-hidden="true"></i> Thêm học sinh</button>
 
-<table class="table table-bordered my-3">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Tên học sinh</th>
-            <th>Ngày sinh</th>
-            <th>Số điện thoại</th>
-            <th>Facebook</th>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let s of students; index as i">
-            <td>{{i+1}}</td>
-            <td>{{ s.name }}</td>
-            <td>{{s.dob}}</td>
-            <td>{{s.mobile}}</td>
-            <td><a *ngIf="s.fbUrl" class="h4" href="{{s.fbUrl}}" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></td>
-            <td><a [routerLink]="['/students/', s.$key]">Sửa</a></td>
-        </tr>
-</table>
+<div class="my-3" >
+    <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Tìm kiếm ..">
+</div>
+
+<data-table
+    [items] = "items"
+    [itemCount] = "itemCount"
+    (reload) = "reloadItems($event)"
+>
+    <data-table-column
+        [property] = "'name'"
+        [header] = "'Tên'"
+        [sortable] = "true"
+        [resizable] = "true">
+    </data-table-column>
+
+    <data-table-column
+    [property] = "'dob'"
+    [header] = "'Ngày sinh'"
+    [sortable] = "true"
+    [resizable] = "true">
+        <ng-template #dataTableCell let-item="item">{{ item.dob }}</ng-template>
+    </data-table-column>
+
+    <data-table-column
+    [property] = "'fbUrl'"
+    [header] = "'Facebook'"
+    [resizable] = "true">
+        <ng-template #dataTableCell let-item="item"><a *ngIf="item.fbUrl" class="h4" href="{{item.fbUrl}}" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></ng-template>
+    </data-table-column>
+
+    <data-table-column
+    [property] = "'$key'">
+        <ng-template #dataTableCell let-item="item"><a [routerLink]="['/students/', item.$key]">Sửa</a></ng-template>
+    </data-table-column>
+
+</data-table>
