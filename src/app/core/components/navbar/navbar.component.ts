@@ -13,7 +13,7 @@ export class NavbarComponent {
 
   constructor(private auth : AuthService) { 
     auth.appUser$.subscribe(appUser=>this.appUser = appUser);
-    // afAuth.authState.subscribe(x=>console.log(x)); //log user information
+    // afAuth.authState.subscribe(x=>console.log(x)); //log user information+
   }
 
   logout(){

@@ -12,7 +12,8 @@ export class UserService {
   {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName, 
-      email: user.email
+      email: user.email,
+      imageUrl: user.photoURL
     })
   }
 

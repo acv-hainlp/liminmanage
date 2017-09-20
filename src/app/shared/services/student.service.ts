@@ -7,6 +7,12 @@ export class StudentService {
   constructor(private db: AngularFireDatabase ) { }
 
   create(student) {
+    student.createOn =  Date.now();
+    for (let key in student) {
+      let value = student[key];
+      if (!value) delete student[key];
+    }
+    
     this.db.list('/students').push(student);
   }
 
@@ -19,6 +25,13 @@ export class StudentService {
   }
 
   update(studentId, student){
+    student.updateOn =  Date.now();
+    
+    for (let key in student) {
+      let value = student[key];
+      if (!value) delete student[key];
+    }
+
     return this.db.object('/students/' + studentId).update(student);
   }
 

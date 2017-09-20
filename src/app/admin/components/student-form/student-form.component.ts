@@ -23,11 +23,6 @@ export class StudentFormComponent implements OnInit {
   }
 
   save(student) {
-    for (let key in student) {
-      let value = student[key];
-      if (!value) delete student[key];
-    }
-
     // http://graph.facebook.com/100000011824520/picture?type=large
 
     if(this.id) this.studentService.update(this.id, student); else this.studentService.create(student);

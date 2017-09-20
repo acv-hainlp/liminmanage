@@ -33,7 +33,7 @@
                 <a class="nav-link active text-light" id="dropdownBasic1" ngbDropdownToggle>{{appUser.name}}</a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <ng-container  *ngIf="appUser.isAdmin">
-                       <a class="dropdown-item">Admin Detected</a>
+                    <a class="dropdown-item">Admin Detected</a>
                     </ng-container >
                     <a (click)="logout()" class="dropdown-item">Thoát</a>
                 </div>

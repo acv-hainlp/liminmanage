@@ -25,12 +25,6 @@ export class CourseFormComponent {
 
    save(course)
    {
-      for (let key in course) {
-        let value = course[key];
-        if (!value) delete course[key];
-      }
-      console.log(course);
-
       if(this.id) this.courseService.update(this.id, course) // if id!=null => update, else create
       else this.courseService.create(course);
       this.router.navigate(['/courses']);
