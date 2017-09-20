@@ -20,6 +20,14 @@
         <label for="fbUrl">Facebook link</label>
         <input #fbUrl="ngModel" [(ngModel)]="student.fbUrl" type="text" class="form-control" id="fbUrl" name="fbUrl" placeholder="Facebook Link" url>
       </div>
+      <div class="form-group">
+        <label class="custom-control custom-checkbox">
+          <input #isTeacher [(ngModel)]="student.isTeacher" type="checkbox" class="custom-control-input" name="isTeacher" id="isTeacher">
+          <span class="custom-control-indicator"></span>
+          <span class="h4 text-warning"><i class="fa fa-fire" aria-hidden="true"></i></span>
+          <span class="custom-control-description"> Giáo viên</span>
+        </label>
+      </div>
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">{{(!id) ? "Tạo" : "Cập nhật" }}</button>
       <button *ngIf="id" (click)="delete()" type="button" class="btn btn-danger">Xóa</button>
     </form>

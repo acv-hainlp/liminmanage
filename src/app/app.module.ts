@@ -21,7 +21,6 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { HomeComponent } from './core/components/home/home.component';
 import { StudentsComponent } from './admin/components/students/students.component';
 import { CoursesComponent } from './admin/components/courses/courses.component';
-import { TeachersComponent } from './admin/components/teachers/teachers.component';
 import { BillsComponent } from './admin/components/bills/bills.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { CourseFormComponent } from './admin/components/course-form/course-form.component';
@@ -35,7 +34,6 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
     HomeComponent,
     StudentsComponent,
     CoursesComponent,
-    TeachersComponent,
     BillsComponent,
     LoginComponent,
     CourseFormComponent,
@@ -60,7 +58,6 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
       { path: 'courses/new', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/:id', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard, AdminAuthGuard]},
-      { path: 'teachers', component: TeachersComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'bills', component: BillsComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'login', component: LoginComponent }
     ])
