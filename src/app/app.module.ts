@@ -26,6 +26,7 @@ import { LoginComponent } from './core/components/login/login.component';
 import { CourseFormComponent } from './admin/components/course-form/course-form.component';
 import { ClassComponent } from './admin/components/class/class.component';
 import { StudentFormComponent } from './admin/components/student-form/student-form.component';
+import { ClassFormComponent } from './admin/components/class-form/class-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
     LoginComponent,
     CourseFormComponent,
     ClassComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    ClassFormComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import { StudentFormComponent } from './admin/components/student-form/student-fo
       { path: 'students/new', component: StudentFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'students/:id', component: StudentFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'class', component: ClassComponent, canActivate:[AuthGuard, AdminAuthGuard]},
+      { path: 'class/new', component: ClassFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/new', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses/:id', component: CourseFormComponent, canActivate:[AuthGuard, AdminAuthGuard]},
       { path: 'courses', component: CoursesComponent, canActivate:[AuthGuard, AdminAuthGuard]},

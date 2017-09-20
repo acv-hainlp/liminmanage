@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <select ngModel #course="ngModel" name="course" class="custom-select" required>
+          <option selected disabled>Chọn khóa học</option>
+          <option *ngFor="let c of courses$ | async " [value]="c.$key">{{c.title}}</option>
+        </select>
+        <select ngModel #teacher="ngModel" name="teacher" class="custom-select" required>
+            <option selected disabled>Chọn giáo viên</option>
+            <option *ngFor="let t of teachers$ | async " [value]="t.$key">{{t.name}}</option>
+        </select>
+    </form>
+
+  </div>
+  <div class="col-md-6">
+    
+  </div>
+
+</div>

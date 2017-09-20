@@ -1,3 +1,4 @@
+import { query } from '@angular/core/src/animation/dsl';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -17,7 +18,7 @@ export class StudentService {
   }
 
   getAll() {
-    return this.db.list('/students');
+    return this.db.list('/students', {query: {orderByChild:'name'}});
   }
 
   get(studentId) {
@@ -37,6 +38,14 @@ export class StudentService {
 
   delete(studentId) {
     return this.db.object('/students/' + studentId).remove();
+  }
+
+  getTeacher() {
+    return this.db.list('/students', {
+      query: {
+        orderByChild: 'isTeacher',
+        equalTo: true
+      }});
   }
 
 }
