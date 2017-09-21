@@ -10,7 +10,10 @@
             <option *ngFor="let t of teachers$ | async " [value]="t.$key">{{t.name}}</option>
       </select>
       <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Tạo</button>
-      <input class="form-control my-3" ngModel type="date" name="startOn" id="startOn" placeholder="Ngày bắt đầu" required>
+      <div class="from-group  my-3">
+          <label for="startOn">Ngày bắt đầu học</label>
+          <input class="form-control" ngModel type="date" name="startOn" id="startOn" placeholder="Ngày bắt đầu" required>
+      </div>
     </form>
 
     <!-- List choice -->
