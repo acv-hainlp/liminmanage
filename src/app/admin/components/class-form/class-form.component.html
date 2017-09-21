@@ -5,29 +5,49 @@
           <option selected disabled>Chọn khóa học</option>
           <option *ngFor="let c of courses$ | async " [value]="c.$key">{{c.title}}</option>
         </select>
-        <select ngModel #teacher="ngModel" name="teacher" class="custom-select" required>
+      <select ngModel #teacher="ngModel" name="teacher" class="custom-select" required>
             <option selected disabled>Chọn giáo viên</option>
             <option *ngFor="let t of teachers$ | async " [value]="t.$key">{{t.name}}</option>
-        </select>
-
-        <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Tạo</button>
+      </select>
+      <input class="form-control my-3" ngModel type="date" name="startOn" id="startOn" placeholder="Ngày bắt đầu" required>
+      <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Tạo</button>
     </form>
+
+    <!-- List choice -->
+    <ul class="list-group my-3">
+        <li class="list-group-item disabled">Tổng học phí: {{ totalPrice }},000 vnđ</li>
+        <li class="list-group-item disabled">Danh sách đã thêm</li>
+        <li *ngFor="let student of students" class="list-group-item">
+            <a class="text-danger" (click)="removeStudent()"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <span class="badge badge-success">{{student.price}}</span>
+            {{ student.name }}
+        </li>
+      </ul>
+    <!-- End List choice -->
+
   </div>
   <div class="col-md-6">
-    <h6 *ngFor="let i of studentsName ; index as a"> 
-      <span>{{ i }} + {{a}}</span>
-      <button class="btn btn-danger" (click)="removeStudent(a)"> Delete</button>
-    </h6>
+      <input #query (keyup)="filter(query.value)" class="form-control" type="text" name="search" id="seach" placeholder="Tìm kiếm..">
+      <table class="table table-bordered my-3">
+          <thead>
+            <tr>
+              <th>Tên học sinh</th>
+              <th>Ngày sinh</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of students$ | async">
+              <td>{{ s.name }}</td>
+              <td>{{ s.dob }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,1400)"><i class="fa fa-plus" aria-hidden="true"></i>1400</button>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,1600)"><i class="fa fa-plus" aria-hidden="true"></i>1600</button>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,2000)"><i class="fa fa-plus" aria-hidden="true"></i>2000</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
   </div>
-
-  <div class="row">
-      <ul class="list-group">
-          <li *ngFor="let s of students$ | async" class="list-group-item ">
-            <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name)"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            <span>{{ s.name }}</span>
-          </li>
-        </ul>
-  </div>
-
-
 </div>
+

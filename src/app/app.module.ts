@@ -1,3 +1,5 @@
+import { ClassService } from './shared/services/class.service';
+import { ObjectNgFor } from './objectNgFor.pipe';
 import { StudentService } from './shared/services/student.service';
 import { CourseService } from './shared/services/course.service';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
@@ -40,7 +42,8 @@ import { ClassFormComponent } from './admin/components/class-form/class-form.com
     CourseFormComponent,
     ClassComponent,
     StudentFormComponent,
-    ClassFormComponent
+    ClassFormComponent,
+    ObjectNgFor
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { ClassFormComponent } from './admin/components/class-form/class-form.com
     UserService,
     CourseService,
     AdminAuthGuard,
-    StudentService
+    StudentService,
+    ClassService
   ],
   bootstrap: [AppComponent]
 })
