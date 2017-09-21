@@ -9,15 +9,15 @@
             <option selected disabled>Chọn giáo viên</option>
             <option *ngFor="let t of teachers$ | async " [value]="t.$key">{{t.name}}</option>
       </select>
-      <input class="form-control my-3" ngModel type="date" name="startOn" id="startOn" placeholder="Ngày bắt đầu" required>
       <button class="btn btn-primary" [disabled]="!f.valid" type="submit">Tạo</button>
+      <input class="form-control my-3" ngModel type="date" name="startOn" id="startOn" placeholder="Ngày bắt đầu" required>
     </form>
 
     <!-- List choice -->
     <ul class="list-group my-3">
         <li class="list-group-item disabled">Tổng học phí: {{ totalPrice }},000 vnđ</li>
         <li class="list-group-item disabled">Danh sách đã thêm</li>
-        <li *ngFor="let student of students" class="list-group-item">
+        <li *ngFor="let student of formStudents" class="list-group-item">
             <a class="text-danger" (click)="removeStudent()"><i class="fa fa-trash" aria-hidden="true"></i></a>
             <span class="badge badge-success">{{student.price}}</span>
             {{ student.name }}
@@ -37,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let s of students$ | async">
+            <tr *ngFor="let s of filteredStudents">
               <td>{{ s.name }}</td>
               <td>{{ s.dob }}</td>
               <td>

@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Subscription';
+import { Student } from './../../../shared/models/student';
 import { Router } from '@angular/router';
 import { ClassService } from './../../../shared/services/class.service';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -12,26 +14,28 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './class-form.component.html',
   styleUrls: ['./class-form.component.css']
 })
-export class ClassFormComponent implements OnInit {
-  // students: any = {};
+export class ClassFormComponent implements OnInit, OnDestroy {
+  formStudents: any = [];
   // studentsId = [];
   // studentsName = [];
-  students = [];
+  students: Student[];
   totalPrice: number;
 
-  students$;
+  studentsSubcription : Subscription;
+  filteredStudents: any[];
   courses$;
   teachers$;
 
   constructor(private courseService: CourseService, private studentService: StudentService, private classService: ClassService, private router: Router ) {
     this.courses$ = courseService.getAll();
     this.teachers$ = studentService.getTeacher();
-    this.students$ = studentService.getAll();
+    this.studentsSubcription = this.studentService.getAll().subscribe(students => this.filteredStudents = this.students = students);
+
    }
    
   save(form) {
     let addStudent = {}; //create new object
-    this.students.forEach(student => { //foreach list student
+    this.formStudents.forEach(student => { //foreach list student
       addStudent[student.id] = student.price; // add new property for object
     });
 
@@ -43,7 +47,7 @@ export class ClassFormComponent implements OnInit {
 
   addStudent(studentId, studentName, price){
     let temp = {id : studentId, name: studentName, price: price };
-    this.students.push(temp);
+    this.formStudents.push(temp);
     this.caculatePrice();
     
     // this.studentsName.push(studentName);
@@ -52,7 +56,7 @@ export class ClassFormComponent implements OnInit {
 
   removeStudent(studentId)
   {
-    this.students.splice(studentId,1);
+    this.formStudents.splice(studentId,1);
     this.caculatePrice();
     // delete this.students[studentId];
     // this.studentsId.splice(index, 1);
@@ -61,15 +65,21 @@ export class ClassFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.studentsSubcription.unsubscribe();
+  }
+
   caculatePrice(){
     let totalPrice: number = 0;
-    this.students.forEach(student => {
+    this.formStudents.forEach(student => {
       totalPrice += student.price;
     });
     this.totalPrice = totalPrice;
   }
 
   filter(query: string) {
-    console.log(query);
+    this.filteredStudents = (query) ? 
+      this.students.filter(c => c.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : this.students; //if !(query) return filtercosres else return filterCouses with logic
+      //Logic Filter: getAll query => save to filter & course => if (!query) return students else return filtercourse with query
   }
 }
