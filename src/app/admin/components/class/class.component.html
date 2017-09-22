@@ -1,1 +1,47 @@
 <button class="btn btn-primary" routerLink="/class/new"><i class="fa fa-plus" aria-hidden="true"></i> Thêm lớp mới</button>
+
+<data-table
+[items] = "items"
+[itemCount] = "itemCount"
+(reload) = "reloadItems($event)"
+>
+    <!-- property = name in model type string => can sort by string -->
+<data-table-column
+    [property] = "'name'"
+    [header] = "'Tên'"
+    [sortable] = "true"
+    [resizable] = "true">
+    <ng-template #dataTableCell let-item="item">{{item.course.title}}</ng-template>
+</data-table-column>
+
+<data-table-column
+    [property] = "'teacher'"
+    [header] = "'Giáo viên'"
+    [sortable] = "true"
+    [resizable] = "true">
+    <ng-template #dataTableCell let-item="item">{{item.teacher.name}}</ng-template>
+</data-table-column>
+
+<data-table-column
+    [property] = "'startOn'"
+    [header] = "'Ngày bắt đầu'"
+    [sortable] = "true"
+    [resizable] = "true">
+</data-table-column>
+
+<data-table-column
+    [property] = "'totalPrice'"
+    [header] = "'$'"
+    [sortable] = "true"
+    [resizable] = "true">
+</data-table-column>
+
+<data-table-column
+    [property] = "'$key'"
+    [resizable] = "true">
+    <ng-template #dataTableCell let-item="item">
+        <button class="btn btn-danger btn-sm" (click)="delete(item.$key)" >Xóa</button>
+    </ng-template>
+</data-table-column>
+
+</data-table>

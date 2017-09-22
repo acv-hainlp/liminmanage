@@ -14,4 +14,12 @@ export class ClassService {
     }
     this.db.list('/classes').push(classes);
   }
+
+  getAll(){
+    return this.db.list('/classes');
+  }
+
+  delete(id) {
+    this.db.object('/classes/' + id).remove();
+  }
 }
