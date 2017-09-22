@@ -40,13 +40,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let s of filteredStudents">
-              <td>{{ s.name }}</td>
-              <td>{{ s.dob }}</td>
+            <tr *ngFor="let student of filteredStudents">
+              <td>{{ student.name }}</td>
+              <td>{{ student.dob }}</td>
               <td>
-                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,1400)"><i class="fa fa-plus" aria-hidden="true"></i>1400</button>
-                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,1600)"><i class="fa fa-plus" aria-hidden="true"></i>1600</button>
-                <button class="btn btn-primary btn-sm" (click)="addStudent(s.$key,s.name,2000)"><i class="fa fa-plus" aria-hidden="true"></i>2000</button>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(student,1400)"><i class="fa fa-plus" aria-hidden="true"></i>1400</button>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(student,1600)"><i class="fa fa-plus" aria-hidden="true"></i>1600</button>
+                <button class="btn btn-primary btn-sm" (click)="addStudent(student,2000)"><i class="fa fa-plus" aria-hidden="true"></i>2000</button>
               </td>
             </tr>
           </tbody>

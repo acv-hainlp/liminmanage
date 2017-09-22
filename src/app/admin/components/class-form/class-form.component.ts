@@ -8,6 +8,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { StudentService } from '../../../shared/services/student.service';
 import { CourseService } from './../../../shared/services/course.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import 'rxjs/operator/take';
 
 @Component({
   selector: 'app-class-form',
@@ -34,20 +35,26 @@ export class ClassFormComponent implements OnInit, OnDestroy {
    }
    
   save(form) {
-    let addStudent = {}; //create new object
-    this.formStudents.forEach(student => { //foreach list student
-      addStudent[student.id] = student.price; // add new property for object
-    });
+    let formStudents = {};
+    for (let i = 0; i < this.formStudents.length; ++i) {
+      formStudents[this.formStudents[i].$key] = this.formStudents[i];
+    }
 
-    form["students"] = addStudent; //add all student to form with key student
+    form["students"] = formStudents;
+    form["totalPrice"] = this.totalPrice; //add all student to form with key student
+    this.studentService.get(form.teacher).take(1).subscribe(t=> form["teacher"] = t)
+    this.courseService.get(form.course).take(1).subscribe(c=> form["course"] = c)
+
+    console.log(form);
     this.classService.create(form);
     this.router.navigate(['/class']);
 
   }
 
-  addStudent(studentId, studentName, price){
-    let temp = {id : studentId, name: studentName, price: price };
-    this.formStudents.push(temp);
+  addStudent(student: Student, price){
+    student['price'] = price;
+    this.formStudents.push(student);
+    // console.log(this.formStudents);
     this.caculatePrice();
     
     // this.studentsName.push(studentName);
@@ -72,7 +79,7 @@ export class ClassFormComponent implements OnInit, OnDestroy {
   caculatePrice(){
     let totalPrice: number = 0;
     this.formStudents.forEach(student => {
-      totalPrice += student.price;
+      totalPrice += student['price'];
     });
     this.totalPrice = totalPrice;
   }
